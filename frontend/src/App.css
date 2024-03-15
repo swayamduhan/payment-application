@@ -1,0 +1,11 @@
+/* @media(max-height : 1000px) {
+    .user-data {
+        max-height: 550px;
+    }
+}
+
+@media(max-height : 700px) {
+    .user-data{
+        max-height: 300px;
+    }
+} */
