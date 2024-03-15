@@ -12,7 +12,7 @@ export const Topbar= memo(()=> {
         if(loggedUser == "null" && localStorage.getItem("token")) {
             (async()=>{
                 const response = await axios({
-                    url : "http://localhost:3000/api/v1/user/loggedUser",
+                    url : "https://payment-application.onrender.com/api/v1/user/loggedUser",
                     method : "GET",
                     headers : {
                         Authorization : localStorage.getItem("token")

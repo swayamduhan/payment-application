@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Button from "../components/Button";
-import Heading from "../components/Heading";
 import {Topbar} from "../components/Topbar";
 import axios from "axios"
 import { ErrorMessage } from "../components/ErrorMessage";
@@ -25,7 +24,7 @@ export default function Profile(){
             return
         }
         await axios({
-            url : "http://localhost:3000/api/v1/user/update",
+            url : "https://payment-application.onrender.com/api/v1/user/update",
             method : "PUT",
             headers : {
                 Authorization : localStorage.getItem("token")
@@ -51,7 +50,7 @@ export default function Profile(){
             return
         }
         const response = await axios({
-            url : "http://localhost:3000/api/v1/user/update",
+            url : "https://payment-application.onrender.com/api/v1/user/update",
             method : "PUT",
             headers : {
                 Authorization : localStorage.getItem("token")

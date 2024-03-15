@@ -3,6 +3,7 @@ import {Topbar} from "../components/Topbar";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios"
 import { ErrorMessage } from "../components/ErrorMessage";
+import { Box, LinearProgress } from "@mui/material"
 
 export default function SendMoney() {
     const [amount, setAmount] = useState()
@@ -10,6 +11,7 @@ export default function SendMoney() {
     const [label, setLabel] = useState("")
     const [error, setError] = useState(false)
     const [success, setSuccess] = useState(false)
+    const [loading, setLoading] = useState(false)
     const id = searchParams.get("id")
     const name = searchParams.get("fname") + " " + searchParams.get("lname")
 
@@ -26,6 +28,14 @@ export default function SendMoney() {
     function renderSuccess(){
         if(success) {
             return <div className="font-bold text-green-600 text-center mt-2">Transaction Success!</div>
+        }
+    }
+
+    function renderLoading(){
+        if(loading){
+            return <Box sx={{ width: '100%', paddingTop : "12px" }}>
+            <LinearProgress color="success"/>
+          </Box>
         }
     }
 
@@ -48,8 +58,10 @@ export default function SendMoney() {
             <div className="ml-4 mr-4">
                 <button className="font-semibold text-lg border border-green-600 text-white bg-green-400 p-2 w-full rounded-md hover:bg-green-500 transition ease-in" onClick={async function sendAmount(){
         try{   
+            setLoading(true)
+            setSuccess(false)
             const response = await axios({
-                url : "http://localhost:3000/api/v1/account/transfer",
+                url : "https://payment-application.onrender.com/api/v1/account/transfer",
                 method : "POST",
                 headers : {
                     Authorization : localStorage.getItem("token")
@@ -59,6 +71,7 @@ export default function SendMoney() {
                     amount : amount*100
                 }
             })
+            setLoading(false)
             setSuccess(true)
         } catch(err) {
             console.log(err)
@@ -67,6 +80,7 @@ export default function SendMoney() {
         }
     }}>Send</button>
             </div>
+            {renderLoading()}
         </div>
     </div>
     <div className="h-44"></div>

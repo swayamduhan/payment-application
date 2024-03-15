@@ -14,7 +14,7 @@ export default function Balance(){
             (async()=>{
                 try{setLoading(true)
                     const response = await axios({
-                        url : "http://localhost:3000/api/v1/account/balance",
+                        url : "https://payment-application.onrender.com/api/v1/account/balance",
                         method : 'GET',
                         headers : {
                             Authorization : localStorage.getItem("token")

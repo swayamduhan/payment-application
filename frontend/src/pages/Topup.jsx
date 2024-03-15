@@ -23,7 +23,7 @@ export default function Topup() {
         try{
             setLoading(true)
             await axios({
-               url : "http://localhost:3000/api/v1/account/topup",
+               url : "https://payment-application.onrender.com/api/v1/account/topup",
                 method : "PUT",
                 headers : {
                     Authorization : localStorage.getItem("token")

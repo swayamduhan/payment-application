@@ -3,7 +3,6 @@ import Button from "./Button";
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import { Stack, Skeleton } from "@mui/material"
-import { useSetRecoilState } from "recoil";
 
 export default function Users(){
     const [users, setUsers] = useState([])
@@ -33,7 +32,7 @@ export default function Users(){
             try {
                 setLoading(true)
                 const response = await axios({
-                    url : `http://localhost:3000/api/v1/user/bulk?filter=${filter}`,
+                    url : `https://payment-application.onrender.com/api/v1/user/bulk?filter=${filter}`,
                     method : "GET",
                     headers : {
                         Authorization : localStorage.getItem("token")
