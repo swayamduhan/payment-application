@@ -35,7 +35,7 @@ export const Topbar= memo(()=> {
                 Hello, {loggedUser}
             </div>
             <Link to={"/profile"}>
-            <div className="rounded-full w-12 h-12 bg-slate-200 flex items-center mr-6 md:mr-4 md:static justify-center">
+            <div className="rounded-full w-12 h-12 bg-slate-200 flex items-center mr-8 md:mr-4 md:static justify-center">
                 {loggedUser[0]}
             </div>
             </Link>      
